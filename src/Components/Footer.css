@@ -1,0 +1,323 @@
+/* ================================
+   HEALTHHUB MEDICAL FOOTER
+================================ */
+
+.health-footer {
+    background: #073f36;
+    color: #ffffff;
+    margin-bottom: -60px;
+    margin-right: auto;
+    width: 100%;
+}
+
+
+/* ================================
+   MAIN FOOTER
+================================ */
+
+.footer-container {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 60px 30px 45px;
+
+    display: grid;
+    grid-template-columns:
+        1.5fr
+        1fr
+        1fr
+        1.3fr;
+
+    gap: 50px;
+}
+
+
+/* ================================
+   BRAND
+================================ */
+
+.footer-brand {
+    max-width: 350px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 24px;
+    font-weight: 700;
+
+    margin-bottom: 18px;
+}
+
+.footer-cross {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+    color: #0b6e5e;
+
+    border-radius: 10px;
+
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.footer-brand > p {
+    color: #c9ded9;
+    line-height: 1.7;
+    font-size: 14px;
+
+    margin: 0 0 22px;
+}
+
+
+/* ================================
+   SOCIAL LINKS
+================================ */
+
+.footer-socials {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    text-decoration: none;
+    color: #ffffff;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    padding: 8px 15px;
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: #ffffff;
+    color: #0b6e5e;
+    transform: translateY(-2px);
+}
+
+
+/* ================================
+   FOOTER HEADINGS
+================================ */
+
+.footer-column h3 {
+    font-size: 17px;
+    margin: 5px 0 20px;
+
+    color: #ffffff;
+
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-column h3::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 35px;
+    height: 2px;
+
+    background: #7ed6c2;
+}
+
+
+/* ================================
+   FOOTER LIST
+================================ */
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: #c9ded9;
+
+    font-size: 14px;
+
+    transition: all 0.25s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #ffffff;
+    padding-left: 5px;
+}
+
+
+/* ================================
+   CONTACT
+================================ */
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-bottom: 17px;
+}
+
+.contact-icon {
+    font-size: 17px;
+    min-width: 22px;
+}
+
+.contact-item p {
+    margin: 0;
+
+    color: #c9ded9;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.contact-item a {
+    color: #c9ded9;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    word-break: break-word;
+
+    transition: color 0.25s ease;
+}
+
+.contact-item a:hover {
+    color: #ffffff;
+}
+
+
+/* ================================
+   BOTTOM FOOTER
+================================ */
+
+.footer-bottom {
+    max-width: 1250px;
+
+    margin: 0 auto;
+
+    padding: 20px 30px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.footer-bottom p {
+    margin: 0;
+
+    color: #aacbc4;
+
+    font-size: 13px;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-bottom-links a {
+    color: #aacbc4;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition: color 0.25s ease;
+}
+
+.footer-bottom-links a:hover {
+    color: #ffffff;
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 950px) {
+
+    .footer-container {
+        grid-template-columns:
+            1fr
+            1fr;
+
+        gap: 40px;
+    }
+
+    .footer-brand {
+        max-width: 100%;
+    }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+    .health-footer {
+        margin-top: 45px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+
+        padding: 45px 22px 35px;
+
+        gap: 32px;
+    }
+
+    .footer-logo {
+        font-size: 21px;
+    }
+
+    .footer-cross {
+        width: 34px;
+        height: 34px;
+        font-size: 24px;
+    }
+
+    .footer-bottom {
+        padding: 18px 22px;
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .footer-bottom-links {
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 12px;
+    }
+}
