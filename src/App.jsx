@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom'
 
 import Login from './Pages/Login'
-import ForgotPassword from './src/Pages/ForgotPassword'
+import ForgotPassword from "./Pages/ForgotPassword";
 import ProtectedRoute from './Components/Protected'
 import Product from './Pages/Product'
 import ProductDetail from './Pages/ProductDetail'

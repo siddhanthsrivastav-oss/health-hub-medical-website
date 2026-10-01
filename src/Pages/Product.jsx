@@ -12,6 +12,7 @@ import { formatINR } from "../utils/currency";
 const Product = () => {
   const api_url = import.meta.env.VITE_API_URL;
   const [searchTerm, setSearchTerm] = useState("");
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const [expandedProductId, setExpandedProductId] = useState(null);
   const [submittingRatingId, setSubmittingRatingId] = useState(null);
   const [ratingNotices, setRatingNotices] = useState({});
@@ -122,6 +123,27 @@ const Product = () => {
 
     return matchesCategory && matchesSearch;
   });
+
+  const searchSuggestions = sourceProducts
+    .filter((item) => {
+      const term = searchTerm.trim().toLowerCase();
+
+      if (!term) return false;
+
+      const productName = String(
+        item.productName || ""
+      ).toLowerCase();
+
+      const categoryName = String(
+        item.category?.categoryName || ""
+      ).toLowerCase();
+
+      return (
+        productName.includes(term) ||
+        categoryName.includes(term)
+      );
+    })
+    .slice(0, 6);
 
   const submitSearch = (event) => {
     event.preventDefault();
@@ -260,7 +282,6 @@ const Product = () => {
           className="hero-search"
           onSubmit={submitSearch}
         >
-
           <span
             className="search-icon"
             aria-hidden="true"
@@ -272,21 +293,88 @@ const Product = () => {
             type="search"
             placeholder="Search medicines, wellness products or healthcare services"
             value={searchTerm}
-            onChange={(e) =>
-              setSearchTerm(e.target.value)
-            }
+            onFocus={() => {
+              if (searchTerm.trim()) {
+                setShowSuggestions(true);
+              }
+            }}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              setShowSuggestions(true);
+            }}
             aria-label="Search medicines and healthcare products"
           />
+
+          {showSuggestions &&
+            searchTerm.trim() &&
+            searchSuggestions.length > 0 && (
+              <div className="search-suggestions">
+                {searchSuggestions.map((item) => (
+                  <button
+                    key={item._id}
+                    type="button"
+                    className="search-suggestion-item"
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+
+                      setSearchTerm(item.productName);
+                      setShowSuggestions(false);
+
+                      setTimeout(() => {
+                        productsSection.current?.scrollIntoView({
+                          behavior: "smooth",
+                          block: "start",
+                        });
+                      }, 100);
+                    }}
+                  >
+                    <span className="suggestion-name">
+                      {item.productName}
+                    </span>
+{showSuggestions &&
+  searchTerm.trim() &&
+  searchSuggestions.length > 0 && (
+    <div className="search-suggestions">
+      {searchSuggestions.map((item) => (
+        <button
+          key={item._id}
+          type="button"
+          className="search-suggestion-item"
+          onMouseDown={(e) => {
+            e.preventDefault();
+
+            setSearchTerm(item.productName);
+            setShowSuggestions(false);
+
+            setTimeout(() => {
+              productsSection.current?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }, 100);
+          }}
+        >
+          <span className="suggestion-name">
+            {item.productName}
+          </span>
+        </button>
+      ))}
+    </div>
+  )}
+                   
+                  </button>
+                ))}
+              </div>
+            )}
 
           <button
             type="submit"
             aria-label="Show matching products"
+            onClick={() => setShowSuggestions(false)}
           >
             Search
           </button>
-
         </form>
-
 
         {/* ================= HERO ================= */}
 
@@ -377,7 +465,7 @@ const Product = () => {
                   <span>Customer rating</span>
                 </div>
 
-               
+
 
               </div>
 
@@ -620,11 +708,10 @@ const Product = () => {
           {filteredProducts?.map((item) => (
 
             <div
-              className={`productCard ${
-                expandedProductId === item._id
+              className={`productCard ${expandedProductId === item._id
                   ? "description-open"
                   : ""
-              }`}
+                }`}
               key={item._id}
             >
 
@@ -647,11 +734,10 @@ const Product = () => {
 
 
                 <p
-                  className={`product-desc ${
-                    expandedProductId === item._id
+                  className={`product-desc ${expandedProductId === item._id
                       ? "is-expanded"
                       : ""
-                  }`}
+                    }`}
                 >
                   {item.description ||
                     "No description available."}

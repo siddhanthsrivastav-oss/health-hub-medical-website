@@ -928,3 +928,57 @@ textarea {
   }
 }
 
+.hero-search {
+  position: relative;
+  z-index: 1000;
+}
+
+.search-suggestions {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: calc(100% - 105px);
+
+  background: #ffffff;
+  border: 1px solid #e3eeee;
+  border-radius: 10px;
+
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.08);
+
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.search-suggestion-item {
+  width: 100%;
+  display: block;
+
+  padding: 13px 18px;
+
+  background: #ffffff;
+  border: none;
+  border-bottom: 1px solid #eeeeee;
+
+  text-align: left;
+  cursor: pointer;
+}
+
+.search-suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.search-suggestion-item:hover {
+  background: #f5faf9;
+}
+
+.suggestion-name {
+  display: block;
+
+  font-size: 15px;
+  font-weight: 500;
+  color: #263238;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
